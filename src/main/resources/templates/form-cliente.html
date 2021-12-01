@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+	<h1>FORMULARIO</h1>
+
+	<div class="container">
+
+		<div class="signup-form-container">
+
+			<!-- form start -->
+			<form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+				<p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
+				
+				<div class="form-header">
+					<h3 class="form-title"><i class="fa fa-user"></i> Registro </h3>
+
+					<div class="pull-right">
+						<h3 class="form-title"><span class="glyphicon glyphicon-pencil"></span></h3>
+					</div>
+
+				</div>
+
+				<div class="form-body">
+					<label for="exampleFormControlFile1">Nombre</label>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<input name="nombre" type="text" class="form-control">
+						</div>
+						<span class="help-block" id="error"></span>
+					</div>
+
+					<label for="exampleFormControlFile1">Apellido</label>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<input name="apellido" type="text" class="form-control">
+						</div>
+						<span class="help-block" id="error"></span>
+					</div>
+
+					<label for="exampleFormControlFile1">DNI</label>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+							<input name="documento" type="text" class="form-control" placeholder=" ejemplo 30123456">
+						</div>
+						<span class="help-block" id="error"></span>
+					</div>
+
+					<label for="exampleFormControlFile1">Telefono</label>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<input name="telefono" type="text" class="form-control" placeholder="ejemplo 2615123456">
+						</div>
+						<span class="help-block" id="error"></span>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+							<input type="file" class="form-control-file" name="archivo">
+						</div>
+						<span class="help-block" id="error"></span>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-lg-6">
+							<label for="exampleFormControlFile1">Contraseña</label>
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+								<input name="contraseña1" id="password" type="password" class="form-control">
+							</div>
+							<span class="help-block" id="error"></span>
+						</div>
+						<div class="form-group col-lg-6">
+							<label for="exampleFormControlFile1">Repita Contraseña</label>
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+								<input name="contraseña2" type="password" class="form-control">
+							</div>
+							<span class="help-block" id="error"></span>
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="form-footer">
+					<button type="submit" class="btn btn-info">
+						<span class="glyphicon glyphicon-log-in"></span> Registrarme
+					</button>
+				</div>
+
+
+			</form>
+
+		</div>
+
+	</div>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/jquery-1.11.2.min.js"></script>
+	<script src="assets/jquery.validate.min.js"></script>
+
+</body>

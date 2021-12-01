@@ -1,0 +1,22 @@
+.index{
+	position: relative;
+    background: url(../img/lello_libreria_harry_potter_.jpg);
+    background-size: cover;
+    color: white;
+	height: 1000px;
+}
+
+.libro{
+	position:inherit; 
+    background: url(../img/una-via-conduce-hasta-un___HyHx1ve4g_720x0.jpg);
+    background-size: cover;
+    color: white;
+	height: 1100px;
+}
+.form-libro{
+	position: relative;
+    background: url(../img/6ABFFNPNVFASVNKODDBIRJNQ3A.jpg);
+    background-size: cover;
+    color: white;
+	height: 1000px;
+}

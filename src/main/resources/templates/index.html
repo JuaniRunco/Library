@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Head -->
+
+<head th:replace="/fragments/head :: head"></head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav th:replace="/fragments/navbar :: nav"></nav>
+
+	<main class="index">
+		<!-- Header -->
+		<header th:replace="/fragments/headers :: header"></header>
+		
+		<footer class="py-5 bg-black">
+			<p class="m-0 text-center medium">Copyright &copy; Your Website 2021</p>
+		</footer>
+	</main>
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Head -->
+<head th:replace="/fragments/head :: head"> </head>
+
+<body>
+	<nav class="navbar navbar-expand-sm bg-light navbar-dark bg-dark">
+
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Navbar</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/}">Menú Principal</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/autor}">Menú Autores</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/editorial}">Menú Editoriales</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" th:href="@{/libro}">Menú Libreria</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
+					<h1 class="fw-light">AUTORES</h1>
+					<p class="lead text-muted">SINCE 1995</p>
+					<p>
+						<a th:href="@{/autor/registro}" class="btn btn-primary my-2">Cargar Autor</a>
+						<a th:href="@{/autor/lista}" class="btn btn-primary my-2">Listar Autores</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="album py-5 bg-light">
+			<div class="container">
+
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+					<div class="col" th:each="perro : ${perros}">
+						<div class="card shadow-sm">
+							<img class="bd-placeholder-img card-img-top img-thumbnail" th:src="${perro.foto}">
+							<div class="card-body">
+								<p class="card-text"
+									th:text="${perro.nombre} + ' es un '+ ${perro.raza} + ' cuyo apodo es '+  ${perro.apodo}">
+								</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									</div>
+									<small class="text-muted">9 mins</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

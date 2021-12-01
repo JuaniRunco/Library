@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-dark bg-dark">
+	<ul class="navbar-nav">
+		<li class="nav-item active">
+			<a class="navbar-brand" th:href="@{/}">BOOK STORE</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/cliente" th:if="${session.usuariosession == null}">Registrate</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/login" th:if="${session.usuariosession == null}">Log In</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="" th:if="${session.usuariosession != null}">Editar Perfil</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="" th:if="${session.usuariosession != null}">Cerrar Sesion</a>
+		</li>
+		<li class="nav-item" th:if="${session.usuariosession != null}"  sec:authorize="hasRole('ADMIN')">
+			<a class="nav-link" th:href="@{/libro}">Menú Libreria</a>
+		</li> 	
+	</ul>
+
+</nav>
