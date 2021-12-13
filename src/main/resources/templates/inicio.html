@@ -21,12 +21,9 @@
 					<h1 class="fw-light">BOOKSTORE</h1>
 					<p class="lead text-muted">SINCE 1995</p>
 					<p>
-						<a th:href="@{/libro}" class="btn btn-primary my-2">Panel de Libros</a>
+						<a th:href="@{/libro}" sec:authorize="hasRole('ADMIN')" class="btn btn-primary my-2">Panel de Libros</a>
 						<a th:href="@{/autor}" class="btn btn-primary my-2">Panel de Autores</a>
 						<a th:href="@{/editorial}" class="btn btn-primary my-2">Panel de Editoriales</a>
-					</p>
-					<p>
-						<a th:href="@{/cliente}" class="btn btn-primary my-2">Registrarse</a>
 					</p>
 				</div>
 			</div>

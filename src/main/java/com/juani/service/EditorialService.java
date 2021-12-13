@@ -1,7 +1,5 @@
 package com.juani.service;
 
-import java.util.Optional;
-
 import com.juani.entity.Editorial;
 
 public interface EditorialService {

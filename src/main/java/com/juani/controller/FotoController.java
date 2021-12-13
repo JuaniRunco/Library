@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.juani.entity.Libro;
-import com.juani.repository.FotoRepository;
 import com.juani.service.LibroServiceImplements;
 
 @Controller
 @RequestMapping("/foto")
 public class FotoController {
-	
-	@Autowired
-	private FotoRepository fotoRepository;
 	
 	@Autowired
 	private LibroServiceImplements libroServiceImplements;

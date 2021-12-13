@@ -20,7 +20,7 @@ import com.juani.repository.LibroRepository;
 
 @Service
 public class LibroServiceImplements implements LibroService {
-	// Ver Capa de Sv 5 a 7
+
 	@Autowired
 	private LibroRepository libroRepository;
 

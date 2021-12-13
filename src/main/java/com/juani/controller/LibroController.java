@@ -21,8 +21,8 @@ import com.juani.repository.EditorialRepository;
 import com.juani.service.LibroServiceImplements;
 
 @Controller
-@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 @RequestMapping("/libro")
+@PreAuthorize("hasAnyRole('ADMIN')")
 public class LibroController {
 	
 	@Autowired
@@ -60,6 +60,7 @@ public class LibroController {
 			modelo.put("exito", "El libro se creo exitosamente!");
 			
 		} catch (Exception e) {
+			//me falta validar el isbn
 			modelo.put("error", e.getMessage());			
 		}
 		return "form-libro";

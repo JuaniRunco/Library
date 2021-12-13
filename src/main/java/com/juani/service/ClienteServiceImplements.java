@@ -50,7 +50,7 @@ public class ClienteServiceImplements implements UserDetailsService {
 			String contraseña1, String contraseña2) throws ExceptionService {
 
 		// validar datos
-		validar(documento, nombre, apellido, telefono, contraseña1, contraseña2);
+		validar(archivo,documento, nombre, apellido, telefono, contraseña1, contraseña2);
 		Cliente cliente = new Cliente();
 		cliente.setDocumento(documento);
 		cliente.setNombre(nombre);
@@ -81,7 +81,7 @@ public class ClienteServiceImplements implements UserDetailsService {
 	public void modificar(MultipartFile archivo, String id, Long documento, String nombre, String apellido,
 			String telefono, String contraseña1, String contraseña2) throws ExceptionService {
 
-		validar(documento, nombre, apellido, telefono, contraseña1, contraseña2);
+		validar(archivo,documento, nombre, apellido, telefono, contraseña1, contraseña2);
 		Optional<Cliente> respuesta = clienteRepository.findById(id);
 
 		if (respuesta.isPresent()) {
@@ -143,8 +143,12 @@ public class ClienteServiceImplements implements UserDetailsService {
 		return clientes;
 	}
 
-	public void validar(Long documento, String nombre, String apellido, String telefono, String contraseña1,
+	public void validar(MultipartFile archivo, Long documento, String nombre, String apellido, String telefono, String contraseña1,
 			String contraseña2) throws ExceptionService {
+		
+		if (archivo==null || archivo.isEmpty()) {
+			throw new ExceptionService("Falta cargar su foto.");
+		}
 
 		if (nombre.isEmpty() || nombre == null) {
 			throw new ExceptionService("Falta el nombre.");
@@ -155,7 +159,7 @@ public class ClienteServiceImplements implements UserDetailsService {
 
 		}
 
-		if (documento==null) {
+		if (documento == null) {
 			throw new ExceptionService("Falta el documento");
 
 		}

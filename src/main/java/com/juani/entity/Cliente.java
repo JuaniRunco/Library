@@ -22,7 +22,6 @@ public class Cliente implements Serializable {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-
 	private Long documento;
 	private String nombre;
 	private String apellido;
@@ -56,7 +55,7 @@ public class Cliente implements Serializable {
 		this.id = id;
 	}
 
-	public long getDocumento() {
+	public Long getDocumento() {
 		return documento;
 	}
 
@@ -119,5 +118,7 @@ public class Cliente implements Serializable {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
+
+	
 
 }

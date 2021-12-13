@@ -3,6 +3,7 @@ package com.juani.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ import com.juani.service.AutorServiceImplements;
 
 @Controller
 @RequestMapping("/autor")
+@PreAuthorize("hasAnyRole('ADMIN')")
 public class AutorController {
 
 	@Autowired
