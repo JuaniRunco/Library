@@ -22,7 +22,6 @@ import com.juani.service.LibroServiceImplements;
 
 @Controller
 @RequestMapping("/libro")
-@PreAuthorize("hasAnyRole('ADMIN')")
 public class LibroController {
 	
 	@Autowired
@@ -39,7 +38,9 @@ public class LibroController {
 		return "libro";
 	}
 	
+	
 	@GetMapping ("/registro")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String formulario(ModelMap modelo) {
 		List<Autor> autores=autorRepository.findAll();
 		List<Editorial> editoriales=editorialRepository.findAll();
@@ -49,6 +50,7 @@ public class LibroController {
 	}
 	
 	@PostMapping ("/registro")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String formulario(ModelMap modelo,MultipartFile archivo,@RequestParam Long isbn,@RequestParam String Titulo,@RequestParam Integer anio,@RequestParam Integer ejemplares,
 			@RequestParam Integer ejemplaresPrestados, @RequestParam String idAutor, @RequestParam String idEditorial ) {
 		List<Autor> autores=autorRepository.findAll();
@@ -74,6 +76,7 @@ public class LibroController {
 	}
 	
 	@GetMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id ) {
 		List<Autor> autores=autorRepository.findAll();
 		List<Editorial> editoriales=editorialRepository.findAll();
@@ -85,6 +88,7 @@ public class LibroController {
 	}
 	
 	@PostMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id,MultipartFile archivo,@RequestParam Long isbn,@RequestParam String Titulo,@RequestParam Integer anio,
 			@RequestParam Integer ejemplares,@RequestParam Integer ejemplaresPrestados,@RequestParam String idAutor, @RequestParam String idEditorial) {
 		try {
@@ -99,6 +103,7 @@ public class LibroController {
 	}
 	
 	@GetMapping("/eliminar/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String eliminar(ModelMap modelo,@PathVariable String id) {
 		try {
 			libroServiceImplements.deleteById(id);
@@ -113,6 +118,7 @@ public class LibroController {
 	}
 
 	@GetMapping("/baja/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String baja(@PathVariable String id) {
 		try {
 			libroServiceImplements.darBajaLibro(id);
@@ -124,6 +130,7 @@ public class LibroController {
 	}
 
 	@GetMapping("/alta/{id}")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public String alta(@PathVariable String id) {
 		try {
 			libroServiceImplements.darAltaLibro(id);

@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	
+
 <!-- Head -->
+
 <head th:replace="/fragments/head :: head"></head>
 
 <body>
 
 	<!-- Navigation -->
 	<nav th:replace="/fragments/navbar :: nav"></nav>
-	
+
 	<main class="index">
 		<h1>
 			<center>BIENVENIDO A LA LIBRERIA</center>
 		</h1>
-
+		<h2 class="py-2 text-center" th:if="${session.usuariosession != null}"
+			th:text="${session.usuariosession.nombre + ' ' +session.usuariosession.apellido}"></h2>
 		<section class="py-5 text-center container">
 			<div class="row py-lg-5">
 				<div class="col-lg-6 col-md-8 mx-auto">
 					<h1 class="fw-light">BOOKSTORE</h1>
 					<p class="lead text-muted">SINCE 1995</p>
 					<p>
-						<a th:href="@{/libro}" sec:authorize="hasRole('ADMIN')" class="btn btn-primary my-2">Panel de Libros</a>
-						<a th:href="@{/autor}" class="btn btn-primary my-2">Panel de Autores</a>
-						<a th:href="@{/editorial}" class="btn btn-primary my-2">Panel de Editoriales</a>
+						<a th:href="@{/libro}" class="btn btn-primary my-2">Panel de
+							Libros</a>
+						<a th:href="@{/autor}" sec:authorize="hasRole('ADMIN')" class="btn btn-primary my-2">Panel de
+							Autores</a>
+						<a th:href="@{/editorial}" sec:authorize="hasRole('ADMIN')" class="btn btn-primary my-2">Panel
+							de Editoriales</a>
 					</p>
 				</div>
 			</div>

@@ -58,9 +58,15 @@ public class PortalController {
 				clienteServiceImplements.registrar(archivo, documento, nombre, apellido, telefono, contraseña1, contraseña2);				
 			} catch (ExceptionService e) {
 				modelo.put("error", e.getMessage());
+				modelo.put("documento", documento);
+				modelo.put("nombre", nombre);
+				modelo.put("apellido", apellido);
+				modelo.put("telefono", telefono);
+				modelo.put("contraseña1", contraseña1);
+				modelo.put("contraseña2", contraseña2);
 				return "form-cliente";
 			}
-			modelo.put("titulo", "Bienvenido al Book Store");
+			modelo.put("titulo", "Bienvenido al Book Store ");
 	        modelo.put("descripcion", "Tu usuario fue registrado de manera satisfactoria y te podes loguear ");
 			return "exito";
 	}

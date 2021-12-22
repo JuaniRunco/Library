@@ -18,7 +18,6 @@ import com.juani.service.EditorialServiceImplements;
 
 @Controller
 @RequestMapping("/editorial")
-@PreAuthorize("hasAnyRole('ADMIN')")
 public class EditorialController {
 
 	@Autowired
@@ -30,11 +29,13 @@ public class EditorialController {
 	}
 
 	@GetMapping("/registro")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String formulario() {
 		return "form-editorial";
 	}
 
 	@PostMapping("/registro")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String guardar(ModelMap modelo, @RequestParam String nombre) {
 		try {
 			editorialServiceImplements.registrarEditorial(nombre, true);
@@ -54,6 +55,7 @@ public class EditorialController {
 	}
 
 	@GetMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id) {
 		Editorial editorial = editorialServiceImplements.findById(id);
 		modelo.addAttribute("editorial", editorial);
@@ -61,6 +63,7 @@ public class EditorialController {
 	}
 
 	@PostMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id, @RequestParam String nombre) {
 		try {
 			editorialServiceImplements.modificarEditorial(id, nombre);
@@ -74,6 +77,7 @@ public class EditorialController {
 	}
 
 	@GetMapping("/eliminar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String eliminar(ModelMap modelo,@PathVariable String id) {
 		try {
 			editorialServiceImplements.deleteById(id);
@@ -88,6 +92,7 @@ public class EditorialController {
 	}
 
 	@GetMapping("/baja/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String baja(@PathVariable String id) {
 		try {
 			editorialServiceImplements.darBajaEditorial(id);
@@ -99,6 +104,7 @@ public class EditorialController {
 	}
 
 	@GetMapping("/alta/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String alta(@PathVariable String id) {
 		try {
 			editorialServiceImplements.darAltaAutor(id);

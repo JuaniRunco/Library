@@ -13,9 +13,11 @@
 							class="btn btn-primary btn-lg rounded-pill mt-10">Registrate</a>
 						<a th:href="@{/login}" th:if="${session.usuariosession == null}"
 							class="btn btn-primary btn-lg rounded-pill mt-10">Log In</a>
-						<a th:href="@{/libro}" th:if="${session.usuariosession != null}"
-							sec:authorize="hasRole('ADMIN')" class="btn btn-primary btn-xl rounded-pill mt-5">Panel de Libros</a>
-						<a th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}"
+						<a th:href="@{/libro}" 
+							th:if="${session.usuariosession != null}"
+							sec:authorize="hasRole('ADMIN')"
+							class="btn btn-primary btn-xl rounded-pill mt-5">Panel de Libros</a>
+						<a th:href="@{/editar-perfil/__${session.usuariosession.id}__}"
 							th:if="${session.usuariosession != null}"
 							class="btn btn-primary btn-xl rounded-pill mt-5">Configura tu
 							perfil</a>

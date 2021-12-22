@@ -20,7 +20,6 @@ import com.juani.service.AutorServiceImplements;
 
 @Controller
 @RequestMapping("/autor")
-@PreAuthorize("hasAnyRole('ADMIN')")
 public class AutorController {
 
 	@Autowired
@@ -32,11 +31,13 @@ public class AutorController {
 	}
 
 	@GetMapping("/registro")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String formulario() {
 		return "form-autor";
 	}
 
 	@PostMapping("/registro")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String guardar(ModelMap modelo, @RequestParam String nombre) {
 		try {
 			autorServiceImplements.registrarAutor(nombre, true);
@@ -56,6 +57,7 @@ public class AutorController {
 	}
 
 	@GetMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id) {
 		Autor autor = autorServiceImplements.findById(id);
 		modelo.addAttribute("autor", autor);
@@ -63,6 +65,7 @@ public class AutorController {
 	}
 
 	@PostMapping("/modificar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String modificar(ModelMap modelo, @PathVariable String id, @RequestParam String nombre) {
 		try {
 
@@ -77,6 +80,7 @@ public class AutorController {
 	}
 
 	@GetMapping("/eliminar/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String eliminar(ModelMap modelo, @PathVariable String id) {
 		try {
 			autorServiceImplements.deleteById(id);
@@ -91,6 +95,7 @@ public class AutorController {
 	}
 
 	@GetMapping("/baja/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String baja(@PathVariable String id) {
 		try {
 			autorServiceImplements.darBajaAutor(id);
@@ -102,6 +107,7 @@ public class AutorController {
 	}
 
 	@GetMapping("/alta/{id}")
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public String alta(@PathVariable String id) {
 		try {
 			autorServiceImplements.darAltaAutor(id);

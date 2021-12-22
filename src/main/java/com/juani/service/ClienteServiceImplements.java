@@ -39,18 +39,18 @@ public class ClienteServiceImplements implements UserDetailsService {
 	public void deleteById(String id) {
 		clienteRepository.deleteById(id);
 	}
-	
+
 	@Transactional
-    public List<Cliente> todosLosClientes(){
-        return clienteRepository.findAll();    
-    }
+	public List<Cliente> todosLosClientes() {
+		return clienteRepository.findAll();
+	}
 
 	@Transactional
 	public void registrar(MultipartFile archivo, Long documento, String nombre, String apellido, String telefono,
 			String contraseña1, String contraseña2) throws ExceptionService {
 
 		// validar datos
-		validar(archivo,documento, nombre, apellido, telefono, contraseña1, contraseña2);
+		validar(archivo, documento, nombre, apellido, telefono, contraseña1, contraseña2);
 		Cliente cliente = new Cliente();
 		cliente.setDocumento(documento);
 		cliente.setNombre(nombre);
@@ -81,7 +81,7 @@ public class ClienteServiceImplements implements UserDetailsService {
 	public void modificar(MultipartFile archivo, String id, Long documento, String nombre, String apellido,
 			String telefono, String contraseña1, String contraseña2) throws ExceptionService {
 
-		validar(archivo,documento, nombre, apellido, telefono, contraseña1, contraseña2);
+		validar(archivo, documento, nombre, apellido, telefono, contraseña1, contraseña2);
 		Optional<Cliente> respuesta = clienteRepository.findById(id);
 
 		if (respuesta.isPresent()) {
@@ -89,7 +89,7 @@ public class ClienteServiceImplements implements UserDetailsService {
 			cliente.setDocumento(documento);
 			cliente.setNombre(nombre);
 			cliente.setApellido(apellido);
-			cliente.setTelefono(telefono);			
+			cliente.setTelefono(telefono);
 			cliente.setAlta(true);
 
 			// enctriptamos la clave
@@ -105,7 +105,6 @@ public class ClienteServiceImplements implements UserDetailsService {
 				// Caso contrario la actualiza
 				Foto foto = fotoServiceImplements.actualizarFoto(idFoto, archivo);
 				cliente.setFoto(foto);
-
 				clienteRepository.save(cliente);
 			}
 		} else {
@@ -143,12 +142,17 @@ public class ClienteServiceImplements implements UserDetailsService {
 		return clientes;
 	}
 
-	public void validar(MultipartFile archivo, Long documento, String nombre, String apellido, String telefono, String contraseña1,
-			String contraseña2) throws ExceptionService {
-		
-		if (archivo==null || archivo.isEmpty()) {
+	@Transactional(readOnly = true)
+	public Cliente buscarClientePorId(String id) {
+		return clienteRepository.buscarPorId(id);
+	}
+
+	public void validar(MultipartFile archivo, Long documento, String nombre, String apellido, String telefono,
+			String contraseña1, String contraseña2) throws ExceptionService {
+
+		/*if (archivo == null || archivo.isEmpty()) {
 			throw new ExceptionService("Falta cargar su foto.");
-		}
+		}*/
 
 		if (nombre.isEmpty() || nombre == null) {
 			throw new ExceptionService("Falta el nombre.");
@@ -168,9 +172,14 @@ public class ClienteServiceImplements implements UserDetailsService {
 			throw new ExceptionService("Falta el telefono");
 
 		}
-		
+
 		if (contraseña1 == null || contraseña1.isEmpty() || contraseña1.length() < 6) {
-			throw new ExceptionService("La contraseña es muy corta.");
+			throw new ExceptionService("La contraseña debe superar los 6 digitos.");
+
+		}
+
+		if (contraseña2 == null || contraseña2.isEmpty()) {
+			throw new ExceptionService("Falta repetir la contraseña");
 
 		}
 

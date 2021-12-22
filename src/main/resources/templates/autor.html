@@ -41,33 +41,6 @@
 			</div>
 		</section>
 
-		<div class="album py-5 bg-light">
-			<div class="container">
-
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-					<div class="col" th:each="perro : ${perros}">
-						<div class="card shadow-sm">
-							<img class="bd-placeholder-img card-img-top img-thumbnail" th:src="${perro.foto}">
-							<div class="card-body">
-								<p class="card-text"
-									th:text="${perro.nombre} + ' es un '+ ${perro.raza} + ' cuyo apodo es '+  ${perro.apodo}">
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
 	</main>
 
 

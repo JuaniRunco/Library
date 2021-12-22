@@ -7,31 +7,25 @@
 
 <body>
 	<main class="index">
-		<h1>FORMULARIO</h1>
+		<h1>EDITAR PERFIL</h1>
 
 		<div class="container">
 
 			<div class="signup-form-container">
 
 				<!-- form start -->
-				<form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+				<form th:action="@{/editar-perfil/__${session.usuariosession.id}__}" method="POST"
+					enctype="multipart/form-data">
 					<p th:if="${error != null}" th:text="${error}" style="color:red;"></p>
-
-					<div class="form-header">
-						<h3 class="form-title"><i class="fa fa-user"></i> Registro </h3>
-
-						<div class="pull-right">
-							<h3 class="form-title"><span class="glyphicon glyphicon-pencil"></span></h3>
-						</div>
-
-					</div>
-
+					<input hidden th:value="${id}" name="id">
+	
 					<div class="form-body">
-						<label for="exampleFormControlFile1">Nombre </label>
+						<label for="exampleFormControlFile1">Nombre</label>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-								<input name="nombre" type="text" class="form-control" th:value="${nombre}" placeholder= "ejemplo Pedro10">
+								<input name="nombre" type="text" class="form-control" th:value="${cliente.nombre}"
+									placeholder="ejemplo Pedro10">
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
@@ -40,7 +34,7 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-								<input name="apellido" type="text" class="form-control" th:value="${apellido}">
+								<input name="apellido" type="text" class="form-control" th:value="${cliente.apellido}">
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
@@ -49,7 +43,7 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-								<input name="documento" type="text" class="form-control" th:value="${documento}"
+								<input name="documento" type="text" class="form-control" th:value="${cliente.documento}"
 									placeholder=" ejemplo 30123456">
 							</div>
 							<span class="help-block" id="error"></span>
@@ -59,17 +53,17 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-								<input name="telefono" type="text" class="form-control" th:value="${telefono}"
+								<input name="telefono" type="text" class="form-control" th:value="${cliente.telefono}"
 									placeholder="ejemplo 2615123456">
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
-						
+
 						<label for="exampleFormControlFile1">Foto</label>
 						<div class="form-group">
-							<div class="input-group">							
+							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-								<input type="file" class="form-control-file" name="archivo">
+								<input type="file" class="form-control-file" name="archivo" th:value"${cliente.foto}">
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
@@ -99,7 +93,7 @@
 
 					<div class="form-footer">
 						<button type="submit" class="btn btn-info">
-							<span class="glyphicon glyphicon-log-in"></span> Registrarme
+							<span class="glyphicon glyphicon-log-in"></span> Actualizar Perfil
 						</button>
 					</div>
 
@@ -112,9 +106,10 @@
 		<center><a th:href="@{/}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
 		</center>
 	</main>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/jquery-1.11.2.min.js"></script>
-		<script src="assets/jquery.validate.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/jquery-1.11.2.min.js"></script>
+	<script src="assets/jquery.validate.min.js"></script>
 
 </body>
+
 </html>
