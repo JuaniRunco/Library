@@ -14,7 +14,7 @@
 	<title>Lista Libros</title>
 </head>
 
-<body>
+<body class=index>
 	<nav class="navbar navbar-expand-sm bg-light navbar-dark bg-dark">
 
 		<ul class="navbar-nav">
@@ -36,9 +36,9 @@
 		</ul>
 	</nav>
 
-	<h3>
+	<h1>
 		<center>Lista libros</center>
-	</h3>
+	</h1>
 	<div class="container">
 		<div class="row d-flex justify-content-center">
 			<div class="col-xs-12">
@@ -55,10 +55,10 @@
 							<th scope="col">Editorial</th>
 							<th scope="col">Imagen</th>
 							<th scope="col">Condicion</th>
-							<th scope="col">Editar</th>
-							<th scope="col">Dar de baja</th>
-							<th scope="col">Dar de alta</th>
-							<th scope="col">Eliminar</th>
+							<th scope ="col" sec:authorize="hasRole('ADMIN')">Editar</th>
+							<th scope ="col" sec:authorize="hasRole('ADMIN')">Dar de baja</th>
+							<th scope ="col" sec:authorize="hasRole('ADMIN')">Dar de alta</th>
+							<th scope ="col" sec:authorize="hasRole('ADMIN')">Eliminar</th>
 						</tr>
 					</thead>
 					<tbody th:each="libro : ${libros}">
@@ -79,15 +79,15 @@
 							<td><i th:if="${libro.alta}" class="fa fa-circle text-success"></i>
 								<i th:unless="${libro.alta}" class="fa fa-circle" style="color:red;"></i>
 							</td>
-							<td><a th:href="@{/libro/modificar/__${libro.id}__}"><button type="submit"
+							<td sec:authorize="hasRole('ADMIN')"><a  th:href="@{/libro/modificar/__${libro.id}__}"><button type="submit"
 										class="btn btn-primary">Editar</button></a></td>
-							<td><a th:href="@{/libro/baja/__${libro.id}__}"><button type="submit"
+							<td sec:authorize="hasRole('ADMIN')"><a  th:href="@{/libro/baja/__${libro.id}__}"><button type="submit"
 										class="btn btn-warning">Dar de
 										baja</button></a></td>
-							<td><a th:href="@{/libro/alta/__${libro.id}__}"><button type="submit"
+							<td sec:authorize="hasRole('ADMIN')"><a  th:href="@{/libro/alta/__${libro.id}__}"><button type="submit"
 										class="btn btn-success">Dar de
 										alta</button></a></td>
-							<td><a th:href="@{/libro/eliminar/__${libro.id}__}"><button type="submit"
+							<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/libro/eliminar/__${libro.id}__}"><button type="submit"
 										class="btn btn-danger">Eliminar</button></a></td>
 						</tr>
 
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 	</div>
-	<center><a th:href="@{/libro}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
+	<center><a th:href="@{/inicio}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
 	</center>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

@@ -66,7 +66,6 @@ public class ClienteController {
 			session.setAttribute("usuariosession", cliente);
 			return "redirect:/inicio";
 		} catch (ExceptionService e) {
-
 			modelo.put("error", e.getMessage());
 			return "redirect:/editar-perfil/{id}";
 		}

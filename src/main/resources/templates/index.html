@@ -12,12 +12,31 @@
 	<nav th:replace="/fragments/navbar :: nav"></nav>
 
 	<main class="index">
-		<!-- Header -->
-		<header th:replace="/fragments/headers :: header"></header>
-		
-		<footer class="py-5 bg-black">
-			<p class="m-0 text-center medium">Copyright &copy; Your Website 2021</p>
-		</footer>
+		<header class="masthead text-center text-white">
+			<div class="masthead-content">
+				<div class="container">
+					<h1 masthead-heading mb-0>BIENVENIDO A LA LIBRERIA</h1>
+
+					<div class="row py-lg-5">
+						<div class="col-lg-6 col-md-8 mx-auto">
+							<h1 class="fw-light">BOOKSTORE</h1>
+							<p class="lead text-muted">SINCE 1995</p>
+
+							<p>
+								<a th:href="@{/cliente}" th:if="${session.usuariosession == null}"
+									class="btn btn-primary btn-lg rounded-pill mt-10">Registrate</a>
+								<a th:href="@{/login}" th:if="${session.usuariosession == null}"
+									class="btn btn-primary btn-lg rounded-pill mt-10">Log In</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+					<footer class="py-5 bg-black">
+						<p class="m-0 text-center medium">Copyright &copy; Your Website 2021</p>
+					</footer>
 	</main>
 
 	<script src="js/bootstrap.bundle.min.js"></script>

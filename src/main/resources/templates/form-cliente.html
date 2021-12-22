@@ -31,7 +31,8 @@
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-								<input name="nombre" type="text" class="form-control" th:value="${nombre}" placeholder= "ejemplo Pedro10">
+								<input name="nombre" type="text" class="form-control" th:value="${nombre}"
+									placeholder="ejemplo Pedro10">
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
@@ -64,10 +65,10 @@
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
-						
+
 						<label for="exampleFormControlFile1">Foto</label>
 						<div class="form-group">
-							<div class="input-group">							
+							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
 								<input type="file" class="form-control-file" name="archivo">
 							</div>
@@ -109,12 +110,13 @@
 			</div>
 
 		</div>
-		<center><a th:href="@{/}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
+		<center><a th:href="@{/inicio}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
 		</center>
 	</main>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/jquery-1.11.2.min.js"></script>
-		<script src="assets/jquery.validate.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/jquery-1.11.2.min.js"></script>
+	<script src="assets/jquery.validate.min.js"></script>
 
 </body>
+
 </html>

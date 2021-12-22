@@ -14,23 +14,8 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm bg-light navbar-dark bg-dark">
-
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" th:href="@{/}">BOOKSTORE</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/autor}">Menú Autores</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/editorial}">Menú Editoriales</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" th:href="@{/libro}">Menú Libreria</a>
-			</li>
-		</ul>
-	</nav>
+	<!-- Navigation -->
+	<nav th:replace="/fragments/navbar :: nav"></nav>
 
 	<main class="libro">
 		<section class="py-5 text-center container">
@@ -39,37 +24,37 @@
 					<h1 class="fw-light">LIBRERIA</h1>
 					<p class="lead text-muted">SINCE 1995</p>
 					<p>
-						<a th:href="@{/libro/registro}" class="btn btn-primary my-2">Cargar Libro</a>
+						<a sec:authorize="hasRole('ADMIN')" th:href="@{/libro/registro}" class="btn btn-primary my-2">Cargar Libro</a>
 						<a th:href="@{/libro/lista}" class="btn btn-primary my-2">Listar Libros</a>
 					</p>
 				</div>
 			</div>
 		</section>
-		
-			<div class="container">
 
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+		<div class="container">
 
-					<div class="col" th:each="perro : ${perros}">
-						<div class="card shadow-sm">
-							<img class="bd-placeholder-img card-img-top img-thumbnail" th:src="${perro.foto}">
-							<div class="card-body">
-								<p class="card-text"
-									th:text="${perro.nombre} + ' es un '+ ${perro.raza} + ' cuyo apodo es '+  ${perro.apodo}">
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+				<div class="col" th:each="perro : ${perros}">
+					<div class="card shadow-sm">
+						<img class="bd-placeholder-img card-img-top img-thumbnail" th:src="${perro.foto}">
+						<div class="card-body">
+							<p class="card-text"
+								th:text="${perro.nombre} + ' es un '+ ${perro.raza} + ' cuyo apodo es '+  ${perro.apodo}">
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 								</div>
+								<small class="text-muted">9 mins</small>
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</div>
+		</div>
 		</div>
 
 	</main>
